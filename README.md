@@ -17,7 +17,7 @@ docker build \
 `/work` diretory in the running docker image.
 
 ```bash
-docker run --name cborg-claude --network host \
+docker run --network host \
   -v "$(pwd)":/work -w /work \
   -e ANTHROPIC_SMALL_FAST_MODEL=anthropic/claude-haiku \
   -e ANTHROPIC_MODEL=anthropic/claude-sonnet \
