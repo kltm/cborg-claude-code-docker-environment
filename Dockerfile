@@ -8,7 +8,6 @@ ARG USER_ID=1000
 ARG GROUP_ID=1000
 ARG USERNAME=claude
 
-# If UID/GID already exist, reuse them; otherwise create fresh
 RUN if id -u ${USER_ID} >/dev/null 2>&1; then \
       existing_user=$(getent passwd ${USER_ID} | cut -d: -f1) && \
       usermod -l ${USERNAME} -d /home/${USERNAME} -m "$existing_user" && \
@@ -16,6 +15,8 @@ RUN if id -u ${USER_ID} >/dev/null 2>&1; then \
     else \
       groupadd -g ${GROUP_ID} ${USERNAME} && \
       useradd -m -u ${USER_ID} -g ${GROUP_ID} -s /bin/bash ${USERNAME} ; \
-    fi
+    fi && \
+    echo "${USERNAME} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/${USERNAME} && \
+    chmod 0440 /etc/sudoers.d/${USERNAME}
 
 USER ${USERNAME}
