@@ -30,5 +30,7 @@ docker run --name cborg-claude --network host \
   -it cborg-claude /bin/bash
 ```
 
+You will now be able to rejoin this image later on.
+
 Now that you're inside the container, `cd` to `/work` and run
 `claude`. 
