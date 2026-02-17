@@ -1,5 +1,5 @@
 # cborg-claude-code-docker-environment
-A fallback environment for CBORG and Claude Code.
+A fallback environment for CBorg and Claude Code.
 
 ## Instructions.
 
